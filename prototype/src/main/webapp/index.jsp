@@ -113,6 +113,8 @@
     <img src="IoTBay Logo Design.PNG" alt="logo" class="logo">
     <div class="subTitle">WELCOME TO</div>
     <div class="title">IOTBAY</div>
+
+
     <div class="button-container">
         <form action="login.jsp">
             <button class="btn">LOGIN</button>
