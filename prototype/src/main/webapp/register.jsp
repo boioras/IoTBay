@@ -81,7 +81,8 @@
 
         .dob-container select{
             width: 90px;
-            margin: 10px 5px
+            margin: 10px 5px;
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .btn {
@@ -124,7 +125,7 @@
             </div>
             <div class="form-row">
             <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-            
+
             <div class="dob-container">
             <select name="DOB_day" required>
             <option value="">DD</option>
