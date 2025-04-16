@@ -132,16 +132,16 @@
 
     <div class="user-info">
     <h1> Your Details: </h1>
-        <p><strong>Name:</strong> John Doe</p>
-        <p><strong>Email:</strong> JohnDoe@gmail.com</p>
-        <p><strong>Phone:</strong> 0123 456 789</p>
-        <p><strong>Address:</strong> Sydney Street, Sydney</p>
-        <p><strong>DOB:</strong> 21/01/2000</p>
-        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Name:</strong> <%=request.getParameter("firstname") %><%= request.getParameter("lastname") %></p>
+        <p><strong>Email:</strong> <%=request.getParameter("email") %></p>
+        <p><strong>Phone Number:</strong> <%=request.getParameter("phone") %></p>
+        <p><strong>DOB:</strong>
+        <%=request.getParameter("DOB_day") %> / <%=request.getParameter("DOB_month") %> / <%=request.getParameter("DOB_year") %></p>
+
     </div>
 
     <div class="button-container">
-            <form action="main.jsp" method="GET">
+            <form action="Mainpage.jsp" method="GET">
             <button type="submit" class="btn shop">View Shop Items</button>
         </form>
 
