@@ -87,13 +87,14 @@
         .btn {
             padding: 16px 80px;
             font-size: 20px;
-            background-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.3);
             border: none;
             color: white;
             cursor: pointer;
             border-radius: 8px;
             font-weight: bold;
             transition: background-color 0.5s ease, transform 0.3s;
+            margin-top: 30px;
         }
 
         .btn:hover {
