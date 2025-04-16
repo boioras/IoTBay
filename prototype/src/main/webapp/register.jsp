@@ -124,6 +124,7 @@
             </div>
             <div class="form-row">
             <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+            
             <div class="dob-container">
             <select name="DOB_day" required>
             <option value="">DD</option>
