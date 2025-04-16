@@ -111,18 +111,18 @@
             font-size: 20px;
             z-index: 1;
             opacity: 0;
-            animation: UpScale 1.5s ease-out forwards;
+            animation: upScale 1.5s ease-out forwards;
             animation-delay: 0.2s;
         }
 
         .guest-link a{
             color: white;
-            transition: font-size 0.3s ease, color 0.3s ease;
             text-decoration: underline;
         }
 
         .guest-link a:hover{
             font-size: 23px;
+            transition: font-size 0.3s ease, color 0.3s ease;
             color: rgba(255, 255, 255, 0.7);
         }
 
