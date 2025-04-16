@@ -132,7 +132,7 @@
 
     <div class="user-info">
     <h1> Your Details: </h1>
-        <p><strong>Name:</strong> <%=request.getParameter("firstname") %><%= request.getParameter("lastname") %></p>
+        <p><strong>Name:</strong> <%=request.getParameter("firstname") %> <%= request.getParameter("lastname") %></p>
         <p><strong>Email:</strong> <%=request.getParameter("email") %></p>
         <p><strong>Phone Number:</strong> <%=request.getParameter("phone") %></p>
         <p><strong>DOB:</strong>
@@ -141,7 +141,7 @@
     </div>
 
     <div class="button-container">
-            <form action="Mainpage.jsp" method="GET">
+            <form action="main.jsp" method="GET">
             <button type="submit" class="btn shop">View Shop Items</button>
         </form>
 
