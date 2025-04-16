@@ -111,7 +111,7 @@
             font-size: 20px;
             z-index: 1;
             opacity: 0;
-            animation: upScale 1.5s ease-out forwards;
+            animation: UpScale 1.5s ease-out forwards;
             animation-delay: 0.2s;
         }
 
