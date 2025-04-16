@@ -28,12 +28,10 @@
 
     .logo {
       position: absolute;
-      top: 15px;
-      left: 15px;
-      width: 60px;
-      background-color: #fff;
-      padding: 5px;
-      border-radius: 10px;
+      top: 5px;
+      left: 5px;
+      width: 120px;
+      height: auto;
     }
 
     .products {
