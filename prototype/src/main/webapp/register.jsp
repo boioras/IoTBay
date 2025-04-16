@@ -46,7 +46,7 @@
 
 
         @keyframes fadeIn{
-            from {opacity: 0; transform: scale(0.8);}
+            from {opacity: 0; transform: scale(0.5);}
             to {opacity: 1; transform: scale(1);}
         }
 
@@ -82,7 +82,6 @@
         .dob-container select{
             width: 90px;
             margin: 10px 5px;
-            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .btn {
