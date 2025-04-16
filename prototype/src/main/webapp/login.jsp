@@ -123,7 +123,7 @@
     <div class="title">IOTBAY</div>
 
     <div class="form-container">
-        <form action="mainpage.jsp" method="POST">
+        <form action="Mainpage.jsp" method="POST">
             <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
             <input type="password" id="password" name="password" placeholder="Enter your password" required><br>
             <button type="submit" class="btn">LOGIN</button>

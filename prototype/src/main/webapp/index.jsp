@@ -119,7 +119,7 @@
         <form action="login.jsp">
             <button class="btn">LOGIN</button>
         </form>
-        <form action="signup.jsp">
+        <form action="register.jsp">
             <button class="btn">SIGN UP</button>
         </form>
     </div>
