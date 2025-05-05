@@ -42,7 +42,7 @@
         font-size: 25px;
         transition: all 0.3s ease;
         position: relative;
-        display: inLine-block;
+        display: inline-block;
     }
 
     .nav-links a:hover{
@@ -202,7 +202,7 @@
     <div class="nav-links">
         <a href ="#">Orders</a>
         <a href ="#">Devices</a>
-        <a href ="login.jsp">Login</a>
+        <a href ="login2.jsp">Login</a>
         <a href ="#">Profile</a>
     </div>
 </nav>

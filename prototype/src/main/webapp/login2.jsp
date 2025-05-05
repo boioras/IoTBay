@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
     *{
@@ -68,16 +68,9 @@
         margin-top: 0;
         font-family: 'Orbitron', sans-serif;
         font-size: 40px;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         text-transform: uppercase;
         letter-spacing: 2px;
-    }
-
-    p{
-        margin-bottom: 30px;
-        font-size: 20px;
-        letter-spacing: 1px;
-        color: #ccc;
     }
 
     .input-field{
@@ -100,13 +93,20 @@
     }
 
     .input-field::placeholder{
-        display: flex;
-        justify-content: space-between;
+        color: #999;
+    }
+
+    .login-text{
+        margin: 20px 0;
+        font-size: 15px;
+        letter-spacing: 1px;
+        color: #ccc;
     }
 
     .button-row{
         display: flex;
         justify-content: space-between;
+        margin-top: 20px;
     }
 
     .btn{
@@ -136,24 +136,33 @@
         transform: scale(1.15);
     }
 
-        </style>
-    </head>
-    <body>
-    <div class ="form-content">
-    <h1>SIGN UP TO IOTBay</h1>
-    <p>Thank you for joining IOTBay</p>
+    a{
+        color: #ae7cff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
 
-    <form action="register.jsp" method="post">
-    <input type="text" class="input-field" name="firstName" placeholder="FIRST NAME" required>
-    <input type="text" class="input-field" name="lastName" placeholder="LAST NAME" required>
-    <input type="email" class="input-field" name="email" placeholder="EMAIL" required>
-    <input type="tel" class="input-field" name="phone" placeholder="PHONE" required>
+    a:hover{
+        color: #d6bcff;
+        text-decoration: none;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="form-content">
+    <h1>LOGIN TO IOTBay</h1>
+
+    <form action ="login.jsp" method="post">
+    <input type="email" class="input-field" name="userName" placeholder="USERNAME (EMAIL)" required>
     <input type="password" class="input-field" name="password" placeholder="PASSWORD" required>
+
+    <p class="sign-up-text">Don't have an account? <a href="signup.jsp">Sign Up today!</a></p>
 
     <div class="button-row">
     <button type="button" class ="btn" onclick="location.href='index.jsp'">RETURN</button>
-    <button type="submit" class ="btn btn-submit">SIGN UP</button>
-    </div>
-    </form>
-    </div>
-            
+    <button type="button" class ="btn btn-submit">LOGIN</button>
+
+</div>
+</form>
+</div>
