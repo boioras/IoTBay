@@ -115,6 +115,46 @@
         animation-delay: 0.4s;
     }
 
+    .dropdown{
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu{
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgba(255, 255, 255);
+        padding: 10px 0;
+        border-radius: 5px;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.4);
+        z-index: 99;
+        min-width: 180px;
+        text-align: left;
+        overflow: hidden;
+    }
+
+    .dropdown-menu a{
+        display: block;
+        padding: 12px 20px;
+        color: #000;
+        text-decoration: none;
+        font-size: 20px;
+        width: 100%;
+        transition: all 0.4s ease;
+        box-sizing: border-box
+    }
+
+    .dropdown-menu a:hover{
+        background-color: rgba(0, 0, 255, 0.5);
+        color: black;
+    }
+
+    .dropdown:hover .dropdown-menu{
+        display: block;
+    }
+
     @keyframes fadeUp {
         0% {
             opacity: 0;
@@ -200,10 +240,19 @@
 
 <nav class ="nav">
     <div class="nav-links">
-        <a href ="#">Orders</a>
+        <a href ="#">Cart</a>
         <a href ="#">Devices</a>
         <a href ="login2.jsp">Login</a>
+
+        <div class ="dropdown">
         <a href ="#">Profile</a>
+        <div class="dropdown-menu">
+        <a href="accountSetting.jsp">Account Settings</a>
+        <a href="#">Orders</a>
+        <a href="#">Wishlist</a>
+        <a href="#">Logout</a>
+    </div>
+    </div>
     </div>
 </nav>
 
