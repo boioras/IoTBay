@@ -143,7 +143,7 @@
     <h1>SIGN UP TO IOTBay</h1>
     <p>Thank you for joining IOTBay</p>
 
-    <form action="register.jsp" method="post">
+    <form action="signup.jsp" method="post">
     <input type="text" class="input-field" name="firstName" placeholder="FIRST NAME" required>
     <input type="text" class="input-field" name="lastName" placeholder="LAST NAME" required>
     <input type="email" class="input-field" name="email" placeholder="EMAIL" required>
