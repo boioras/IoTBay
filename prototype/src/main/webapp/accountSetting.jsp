@@ -240,20 +240,27 @@
     <button class="btn-cancel" onclick="confirmCancel()">CANCEL MY ACCOUNT</button>
     </div>
 
+
     <div id="access" class="tab-content hidden">
     <h2>ACCESS LOGS</h2>
-    <div class="viewer-notice">VIEW ONLY - ACCOUNT ACTIVITY TRACKING</div>
+    <div class="viewer-notice">VIEW AND SEARCH ONLY - ACCOUNT ACTIVITY TRACKING</div>
+    <form method="get" action="SearchLogServlet">
+    <label>SEARCH LOG ACTIVITY:</label>
+    <input type="date" name="searchDate" required>
+    <button type="submit" class="btn-save">Search</button>
+    </form>
+    <label>ACTIVITY LOG DETAILS:</label>
     <div id="logs-container">
     <div class="log-entry">
     <label>LOGGED TIME:</label>
     <div class="log-time"><%=request.getParameter("logTime") %></div>
-    <label>LOG DETAILS::</label>
+    <label>LOG DETAILS:</label>
     <div class="log-details"><%=request.getParameter("activity") %></div>
     <label>LOG LOCATION:</label>
-    <div class="log-location"><%=request.getParameter("location") %></div>
+     <div class="log-location"><%=request.getParameter("location") %></div>
     </div>
-    </div>
-    </div>
+</div>
+</div>
 
 
 <script>
