@@ -93,7 +93,7 @@
         right: 0;
         top: 50%;
         transform: translateY(-50%);
-        width: 45%;
+        width: 50%;
         height: auto;
         z-index: 1;
         opacity: 1;

@@ -124,6 +124,28 @@
         background-color: #f7f7ff;
     }
 
+    .log-entry{
+        padding: 12px;
+        margin-bottom: 12px;
+        background-color: #f7f7ff;
+        border: 2px solid #6a5af9;
+        border-radius: 5px;
+    }
+
+    .log-time{
+        color: #6a5af9
+    }
+
+    .viewer-notice {
+    background-color: #f7f7ff;
+    border: 2px solid #6a5af9;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    }
+
     .btn-save, .btn-cancel{
         margin-top: 24px;
         padding: 12px 24px;
@@ -162,9 +184,10 @@
     <body>
 
     <div class="sidebar">
-    <h1>ACCOUNT<br>SETTINGS<h1>
+    <h1>ACCOUNT<br>SETTINGS</h1>
     <button class="tab-button" onclick="showTab('personal')">Personal Details</button>
     <button class="tab-button" onclick="showTab('edit')">Edit Profile</button>
+    <button class="tab-button" onclick="showTab('access')">Access Log</button>
     <button class="tab-button" onclick="showTab('manage')">Manage Accounts</button>
 
     <button class="logout-button">LOGOUT</button>
@@ -193,7 +216,7 @@
     <h2>EDIT PROFILE</h2>
     <form action="updateProfile.jsp" method="post">
         <label>USERNAME:</label>
-        <input type="text" placeholder="ENTER USERNAME">
+        <input type="text" name="userName" placeholder="ENTER USERNAME">
         <label>EMAIL:</label>
         <input type="email" class="input-field" name="email" placeholder="EMAIL" value="<%=request.getParameter("email") %>" required>
         <label>FIRST NAME:</label>
@@ -216,7 +239,23 @@
     <p>Not happy? Cancel your account below! Reminder this action is permanent and cannot be undone.</p>
     <button class="btn-cancel" onclick="confirmCancel()">CANCEL MY ACCOUNT</button>
     </div>
+
+    <div id="access" class="tab-content hidden">
+    <h2>ACCESS LOGS</h2>
+    <div class="viewer-notice">VIEW ONLY - ACCOUNT ACTIVITY TRACKING</div>
+    <div id="logs-container">
+    <div class="log-entry">
+    <label>LOGGED TIME:</label>
+    <div class="log-time"><%=request.getParameter("logTime") %></div>
+    <label>LOG DETAILS::</label>
+    <div class="log-details"><%=request.getParameter("activity") %></div>
+    <label>LOG LOCATION:</label>
+    <div class="log-location"><%=request.getParameter("location") %></div>
     </div>
+    </div>
+    </div>
+
+
 <script>
 function showTab(tabId){
     const tabs = document.querySelectorAll('.tab-content');

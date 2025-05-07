@@ -151,7 +151,7 @@
     <input type="password" class="input-field" name="password" placeholder="PASSWORD" required>
 
     <div class="button-row">
-    <button type="button" class ="btn" onclick="location.href='index.jsp'">RETURN</button>
+    <button type="button" class ="btn" onclick="location.href='login2.jsp'">RETURN</button>
     <button type="submit" class ="btn btn-submit">SIGN UP</button>
     </div>
     </form>
