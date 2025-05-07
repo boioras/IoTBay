@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Account Settings</title>
+    <title>Staff Account Settings</title>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
     body{
@@ -187,42 +187,37 @@
     <h1>ACCOUNT<br>SETTINGS</h1>
     <button class="tab-button" onclick="showTab('personal')">Personal Details</button>
     <button class="tab-button" onclick="showTab('edit')">Edit Profile</button>
-    <button class="tab-button" onclick="showTab('access')">Access Log</button>
-    <button class="tab-button" onclick="showTab('manage')">Manage Accounts</button>
-
     <button class="logout-button">LOGOUT</button>
     </div>
 
     <div class="main-content">
     <div id="personal" class="tab-content">
     <h2>PERSONAL INFORMATION</h2>
-        <label>USERNAME:</label>
-        <div class="info-box"><%=request.getParameter("email") %></div>
+        <label>STAFF ID:</label>
+        <div class="info-box"><%=request.getAttribute("userName") %></div>
         <label>EMAIL:</label>
-        <div class="info-box"><%=request.getParameter("email") %></div>
+        <div class="info-box"><%=request.getAttribute("email") %></div>
         <label>FIRST NAME:</label>
-        <div class="info-box"><%=request.getParameter("firstName") %></div>
+        <div class="info-box"><%=request.getAttribute("firstName") %></div>
         <label>LAST NAME:</label>
-        <div class="info-box"><%=request.getParameter("lastName") %></div>
+        <div class="info-box"><%=request.getAttribute("lastName") %></div>
         <label>PHONE:</label>
-        <div class="info-box"><%=request.getParameter("phone") %></div>
-
+        <div class="info-box"><%=request.getAttribute("phone") %></div>
     </div>
 
     <div id="edit" class="tab-content hidden">
     <h2>EDIT PROFILE</h2>
-    <form action="updateProfile.jsp" method="post">
-        <label>USERNAME:</label>
-        <input type="text" name="userName" placeholder="ENTER USERNAME">
+    <form action="updateStaffProfile.jsp" method="post">
+        <label>STAFF ID:</label>
+        <input type="text" name="userName" placeholder="ENTER ID">
         <label>EMAIL:</label>
-        <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value="<%=request.getParameter("email") %>" required>
+        <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value="<%=request.getAttribute("email") %>" required>
         <label>FIRST NAME:</label>
-        <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" value="<%=request.getParameter("firstName") %>" required>
+        <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" value="<%=request.getAttribute("firstName") %>" required>
         <label>LAST NAME:</label>
-        <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" value="<%=request.getParameter("lastName") %>" required>
+        <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" value="<%=request.getAttribute("lastName") %>" required>
         <label>PHONE:</label>
-        <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" value="<%=request.getParameter("phone") %>" required>
-
+        <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" value="<%=request.getAttribute("phone") %>" required>
 
     <button type="submit" class="btn-save">SAVE CHANGES</button>
     </form>
@@ -233,28 +228,7 @@
     <p>Not happy? Cancel your account below! Reminder this action is permanent and cannot be undone.</p>
     <button class="btn-cancel" onclick="confirmCancel()">CANCEL MY ACCOUNT</button>
     </div>
-
-
-    <div id="access" class="tab-content hidden">
-    <h2>ACCESS LOGS</h2>
-    <div class="viewer-notice">VIEW AND SEARCH ONLY - ACCOUNT ACTIVITY TRACKING</div>
-    <form method="get" action="SearchLogServlet">
-    <label>SEARCH LOG ACTIVITY:</label>
-    <input type="date" name="searchDate" required>
-    <button type="submit" class="btn-save">Search</button>
-    </form>
-    <label>ACTIVITY LOG DETAILS:</label>
-    <div id="logs-container">
-    <div class="log-entry">
-    <label>LOGGED TIME:</label>
-    <div class="log-time"><%=request.getAttribute("logTime") %></div>
-    <label>LOG DETAILS:</label>
-    <div class="log-details"><%=request.getAttribute("activity") %></div>
-    <label>LOG LOCATION:</label>
-     <div class="log-location"><%=request.getAttribute("location") %></div>
     </div>
-</div>
-</div>
 
 
 <script>
@@ -271,7 +245,3 @@ function confirmCancel() {
 </script>
 </body>
 </html>
-
-
-      
-

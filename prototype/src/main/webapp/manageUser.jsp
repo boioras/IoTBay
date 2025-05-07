@@ -185,48 +185,82 @@
 
     <div class="sidebar">
     <h1>ACCOUNT<br>SETTINGS</h1>
-    <button class="tab-button" onclick="showTab('personal')">Personal Details</button>
-    <button class="tab-button" onclick="showTab('edit')">Edit Profile</button>
-    <button class="tab-button" onclick="showTab('access')">Access Log</button>
-    <button class="tab-button" onclick="showTab('manage')">Manage Accounts</button>
-
-    <button class="logout-button">LOGOUT</button>
+    <button class="tab-button" onclick="showTab('addCustomer')">Add Customer</button>
+    <button class="tab-button" onclick="showTab('removeCustomer')">Remove Customer</button>
+    <button class="tab-button" onclick="showTab('editCustomer')">Edit Customer</button>
+    <button class="tab-button" onclick="showTab('accessLogs')">Access Logs</button>
     </div>
 
     <div class="main-content">
-    <div id="personal" class="tab-content">
-    <h2>PERSONAL INFORMATION</h2>
-        <label>USERNAME:</label>
-        <div class="info-box"><%=request.getParameter("email") %></div>
-        <label>EMAIL:</label>
-        <div class="info-box"><%=request.getParameter("email") %></div>
-        <label>FIRST NAME:</label>
-        <div class="info-box"><%=request.getParameter("firstName") %></div>
-        <label>LAST NAME:</label>
-        <div class="info-box"><%=request.getParameter("lastName") %></div>
-        <label>PHONE:</label>
-        <div class="info-box"><%=request.getParameter("phone") %></div>
+    <div id="addCustomer" class="tab-content">
+    <h2>ADD CUSTOMER</h2>
+    <form action="addCustomerServlet" method="post">
+    <label>USERNAME:</label>
+    <input type="text" name="userName" placeholder="ENTER USERNAME">
+    <label>EMAIL:</label>
+    <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" required>
+    <label>FIRST NAME:</label>
+    <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" required>
+    <label>LAST NAME:</label>
+    <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" required>
+    <label>PHONE:</label>
+    <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" required>
+ 
 
+    <button type="submit" class="btn-save">ADD CUSTOMER</button>
+    </form>
+    
     </div>
 
-    <div id="edit" class="tab-content hidden">
-    <h2>EDIT PROFILE</h2>
-    <form action="updateProfile.jsp" method="post">
-        <label>USERNAME:</label>
-        <input type="text" name="userName" placeholder="ENTER USERNAME">
-        <label>EMAIL:</label>
-        <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value="<%=request.getParameter("email") %>" required>
-        <label>FIRST NAME:</label>
-        <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" value="<%=request.getParameter("firstName") %>" required>
-        <label>LAST NAME:</label>
-        <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" value="<%=request.getParameter("lastName") %>" required>
-        <label>PHONE:</label>
-        <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" value="<%=request.getParameter("phone") %>" required>
+    <div id="removeCustomer" class="tab-content hidden">
+    <h2>REMOVE CUSTOMER</h2>
+    <form action="removeCustomerServlet" method="post">
+    <label>USERNAME:</label>
+    <input type="text" name="userName" required>
 
-
-    <button type="submit" class="btn-save">SAVE CHANGES</button>
+    <button type="submit" class="btn-cancel">REMOVE CUSTOMER</button>
     </form>
     </div>
+
+    <div id="editCustomer" class="tab-content">
+    <h2>EDIT CUSTOMER INFORMATION</h2>
+    <form action="editCustomerServlet" method="post">
+    <label>USERNAME:</label>
+    <input type="text" name="userName" placeholder="ENTER USERNAME">
+    <label>EMAIL:</label>
+    <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" required>
+    <label>FIRST NAME:</label>
+    <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" required>
+    <label>LAST NAME:</label>
+    <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" required>
+    <label>PHONE:</label>
+    <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" required>
+
+    <button type="submit" class="btn-cancel">UPDATE CUSTOMER</button>
+    </form>
+    </div>
+ 
+
+    <div id="accessLogs" class="tab-content hidden">
+    <h2>ACCESS LOGS</h2>
+    <form method="get" action="SearchLogServlet">
+    <label>SEARCH LOG ACTIVITY:</label>
+    <input type="date" name="searchDate" required>
+    <button type="submit" class="btn-save">Search</button>
+    </form>
+    
+    <label>ACTIVITY LOG DETAILS:</label>
+    <div id="logs-container">
+    <div class="log-entry">
+    <label>LOGGED TIME:</label>
+    <div class="log-time"><%=request.getAttribute("logTime") %></div>
+    <label>LOG DETAILS:</label>
+    <div class="log-details"><%=request.getAttribute("activity") %></div>
+    <label>LOG LOCATION:</label>
+    <div class="log-location"><%=request.getAttribute("location") %></div>
+    </div>
+    </div>
+        
 
     <div id="manage" class="tab-content hidden">
     <h2>MANAGE ACCOUNT</h2>
@@ -247,15 +281,15 @@
     <div id="logs-container">
     <div class="log-entry">
     <label>LOGGED TIME:</label>
-    <div class="log-time"><%=request.getAttribute("logTime") %></div>
+    <div class="log-time"><%=request.getParameter("logTime") %></div>
     <label>LOG DETAILS:</label>
-    <div class="log-details"><%=request.getAttribute("activity") %></div>
+    <div class="log-details"><%=request.getParameter("activity") %></div>
     <label>LOG LOCATION:</label>
-     <div class="log-location"><%=request.getAttribute("location") %></div>
+     <div class="log-location"><%=request.getParameter("location") %></div>
     </div>
-</div>
-</div>
-
+    </div>
+    </div>
+    </div>
 
 <script>
 function showTab(tabId){
@@ -263,15 +297,7 @@ function showTab(tabId){
     tabs.forEach(tab => tab.classList.add('hidden'));
     document.getElementById(tabId).classList.remove('hidden');
 }
-function confirmCancel() {
-    if(confirm('Are you sure you want to cancel your account? This action cannot be undone!')) {
-        alert('Account cancellation request has been submitted. Thank you!');
-    }
-}
+
 </script>
 </body>
 </html>
-
-
-      
-

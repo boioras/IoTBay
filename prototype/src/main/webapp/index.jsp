@@ -251,6 +251,16 @@
         <a href="#">Orders</a>
         <a href="#">Wishlist</a>
         <a href="#">Logout</a>
+        <%
+            if ("staff".equals(userRole)) {
+            %>
+            <a href="staffAccount.jsp">Staff Account</a>
+             <a href="manageUsers.jsp">Manage Users</a>
+             <a href="#">Manage Orders</a>
+             <a href="#">Manage Products</a>
+            <%
+            }
+            %>
     </div>
     </div>
     </div>
