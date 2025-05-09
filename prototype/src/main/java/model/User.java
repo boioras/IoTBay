@@ -1,7 +1,7 @@
 package model;
 
 public class User {
-    private String userName;
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -11,9 +11,9 @@ public class User {
 
     public User() {}
 
-    public User(String userName, String firstName, String lastName, String email, String password,
+    public User(int id, String firstName, String lastName, String email, String password,
     String phone, String role){
-        this.userName = userName;
+        this.id = id;
         this.firstName = firstName;
         this.firstName = lastName;
         this.firstName = email;
@@ -26,10 +26,10 @@ public class User {
         this.password = password;
     }
 
-    public String getUserName() { 
-        return userName; }
-    public void setuserName(String userName) { 
-        this.userName = userName; }
+    public int getId() { 
+        return id; }
+    public void setId(int id) { 
+        this.id = id; }
 
     public String getFirstName() { 
         return firstName; }
