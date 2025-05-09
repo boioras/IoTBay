@@ -1,4 +1,4 @@
-CREATE TABLE users (
+CREATE TABLE Users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_name TEXT NOT NULL,
     first_name TEXT NOT NULL,
@@ -16,3 +16,5 @@ CREATE TABLE AccessLog (
     logoutTime DATETIME,
     FOREIGN KEY (userEmail) REFERENCES User(email)
 );
+
+INSERT INTO Users (user
