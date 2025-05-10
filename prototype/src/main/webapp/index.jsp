@@ -1,4 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String userRole = (String) request.getAttribute("userRole");
+    if (userRole == null) {
+        userRole = "guest";
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
