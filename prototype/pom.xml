@@ -79,6 +79,7 @@
                         </webApp>
                     </configuration>
                 </plugin>
+        
             </plugins>
         </pluginManagement>
     </build>
