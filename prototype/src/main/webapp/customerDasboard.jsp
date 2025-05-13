@@ -155,6 +155,18 @@
         display: block;
     }
 
+        .search-bar{
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 2px solid #6a5af9;
+        background-color: #f7f7ff;
+        letter-spacing: 1px;
+
+    }
+
     @keyframes fadeUp {
         0% {
             opacity: 0;
@@ -242,13 +254,21 @@
     <div class="nav-links">
         <a href ="#">Cart</a>
 
-        <div class="dropdown-menu">
+        <div class="dropdown">
         <a href="#">Order</a>
+        <div class="dropdown-menu">
         <a href="#">Manage Orders</a>
         <a href="#">Order History</a>
         </div>
+        </div>
 
-        <a href ="#">Devices</a>
+        <div class="dropdown">
+        <a href ="#" id="devices-link">Devices</a>
+        <div class="dropdown-menu">
+        <input type="text" id="search-bar" placeholder="Search Devices" class="search-bar">
+        </div>
+        </div>
+
         <a href ="login2.jsp">Login</a>
 
         <div class ="dropdown">
@@ -275,5 +295,15 @@
 <img src = "3d-render-game-equipment-console-headset-free-png.webp" alt="Devices" class="devices floating">
 
 </section>
+
+<script>
+document.getElementById("devices-link").addEventListener("click", function(event) {
+    event.preventDefault(); 
+    const searchBar = document.getElementById("search-bar");
+    searchBar.style.display = (searchBar.style.display === "block") ? "none" : "block";
+});
+
+</script>
+
 </body>
 </html>
