@@ -12,7 +12,7 @@
         box-sizing: border-box;
         font-family: 'Anton', sans-serif;
     }
-
+    
     body{
         background-color: #121214;
         color: white;

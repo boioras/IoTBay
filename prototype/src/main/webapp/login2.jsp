@@ -161,7 +161,7 @@
 
     <div class="button-row">
     <button type="button" class ="btn" onclick="location.href='index.jsp'">RETURN</button>
-    <button type="submit" class ="btn btn-submit">LOGIN</button>
+    <button type="submit" class ="btn btn-submit" onclick="location.href='index.jsp'">LOGIN</button>
 
 </div>
 </form>
