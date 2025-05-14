@@ -28,7 +28,7 @@ public class AccessLogDAO {
             stmt.setString(1, log.getUserEmail());
             stmt.setString(2, log.getLoginTime().format(FORMATTER));
             if(log.getLogoutTime() != null){
-                stmt.setString(3, log.getLoginTime().format(FORMATTER));
+                stmt.setString(3, log.getLogoutTime().format(FORMATTER));
             }
             else{
                 stmt.setNull(3, Types.VARCHAR);
@@ -54,7 +54,7 @@ public class AccessLogDAO {
         String sql = "SELECT * FROM AccessLog WHERE userEmail = ? ORDER BY loginTime DESC";
         try(PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, email);
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 logs.add(extLog(rs));
             }

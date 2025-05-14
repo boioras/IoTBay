@@ -90,14 +90,14 @@ public class UserDAO {
     private User extUser(ResultSet rs) throws SQLException {
         return new User(
             rs.getInt("id"),
-            rs.getString("email"),
             rs.getString("first_name"),
             rs.getString("last_name"),
+            rs.getString("email"),
             rs.getString("password"),
             rs.getString("phone"),
             rs.getString("role")
         );
-
+    
     }
 
 }

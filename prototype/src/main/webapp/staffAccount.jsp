@@ -209,7 +209,7 @@
     <h2>EDIT PROFILE</h2>
     <form action="updateStaffProfile.jsp" method="post">
         <label>STAFF ID:</label>
-        <input type="text" name="userName" placeholder="ENTER ID">
+        <input type="text" name="user ID" placeholder="ENTER ID">
         <label>EMAIL:</label>
         <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value="<%=request.getAttribute("email") %>" required>
         <label>FIRST NAME:</label>

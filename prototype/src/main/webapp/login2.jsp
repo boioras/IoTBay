@@ -154,7 +154,7 @@
     <h1>LOGIN TO IOTBay</h1>
 
     <form action ="login" method="post">
-    <input type="email" class="input-field" name="userName" placeholder="USERNAME (EMAIL)" required>
+    <input type="email" class="input-field" name="email" placeholder="EMAIL" required>
     <input type="password" class="input-field" name="password" placeholder="PASSWORD" required>
 
     <p class="sign-up-text">Don't have an account? <a href="signup.jsp">Sign Up today!</a></p>

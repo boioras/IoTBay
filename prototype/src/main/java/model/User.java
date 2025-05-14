@@ -15,11 +15,11 @@ public class User {
     String phone, String role){
         this.id = id;
         this.firstName = firstName;
-        this.firstName = lastName;
-        this.firstName = email;
-        this.firstName = password;
-        this.firstName = phone;
-        this.firstName = role;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.role = role;
     }
     public User(String email, String password) {
         this.email = email;
