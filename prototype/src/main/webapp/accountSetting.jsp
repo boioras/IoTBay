@@ -196,7 +196,7 @@
     <div class="main-content">
     <div id="personal" class="tab-content">
     <h2>PERSONAL INFORMATION</h2>
-        <label>USERNAME:</label>
+        <label>USER ID:</label>
         <div class="info-box"><%=request.getParameter("email") %></div>
         <label>EMAIL:</label>
         <div class="info-box"><%=request.getParameter("email") %></div>
@@ -212,8 +212,8 @@
     <div id="edit" class="tab-content hidden">
     <h2>EDIT PROFILE</h2>
     <form action="updateProfile.jsp" method="post">
-        <label>USERNAME:</label>
-        <input type="text" name="userName" placeholder="ENTER USERNAME">
+        <label>USER ID:</label>
+        <input type="text" name="email" placeholder="ENTER USERNAME">
         <label>EMAIL:</label>
         <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value="<%=request.getParameter("email") %>" required>
         <label>FIRST NAME:</label>

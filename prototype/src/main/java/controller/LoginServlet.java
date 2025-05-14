@@ -2,79 +2,101 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import model.AccessLog;
+import model.User;
 import model.dao.AccessLogDAO;
 import model.dao.DBConnector;
+import model.dao.UserDAO;
 
+@Webservlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(LoginServlet.class.getName());
+    @Override   
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        // 1- retrieve the current session
+        HttpSession session = request.getSession();
 
+        // 2- create an instance of the Validator class    
+        Validator validator = new Validator();
+
+        // 3- capture the posted email      
         String email = request.getParameter("email");
+
+        // 4- capture the posted password    
         String password = request.getParameter("password");
 
-        if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
-            response.sendRedirect("login2.jsp?error=emptyfields");
+        User user = null;
+
+        // Validate email and password format first
+        if (!validator.validateEmail(email)) {           
+            // 8- set incorrect email error to the session
+            session.setAttribute("errorMsg", "The email you entered is incorrect.");
+
+            // 9- redirect user back to the login.jsp
+            request.getRequestDispatcher("login2.jsp").include(request, response);
+            return;
+        } 
+
+        if (!validator.validatePassword(password)) {                  
+            // 11- set incorrect password error to the session 
+            session.setAttribute("errorMsg", "The password you entered is incorrect.");          
+
+            // 12- redirect user back to the login.jsp       
+            request.getRequestDispatcher("login2.jsp").include(request, response);
             return;
         }
 
-        try {
-            DBConnector dbConnector = new DBConnector();
+        DBConnector dbConnector = new DBConnector();
+
+        try {       
             Connection conn = dbConnector.openConnection();
 
-            String sql = "SELECT * FROM Users WHERE email = ? AND password = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                stmt.setString(1, email);
-                stmt.setString(2, password);
+            // Use UserDAO to find the user
+            UserDAO userDAO = new UserDAO(conn);
+            user = userDAO.getUser(email, password);
 
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()) {
-                        String role = rs.getString("role");
+            if (user != null) {
+                // 13- save the logged in user object to the session     
+                session.setAttribute("user", user);
 
-                        HttpSession session = request.getSession();
-                        session.setAttribute("userId", rs.getInt("id"));
-                        session.setAttribute("email", email);
-                        session.setAttribute("firstName", rs.getString("first_name"));
-                        session.setAttribute("role", role);
+                // Log the login event
+                AccessLogDAO accessLogDAO = new AccessLogDAO(conn);
+                AccessLog log = new AccessLog(user.getEmail(), LocalDateTime.now(), null);
+                accessLogDAO.addAccessLog(log);
 
-                        AccessLogDAO logDAO = new AccessLogDAO(conn);
-                        LocalDateTime now = LocalDateTime.now();
-                        AccessLog log = new AccessLog(email, now, null);
-                        logDAO.addAccessLog(log);
+                // 14- redirect user to the index.jsp     
+                request.getRequestDispatcher("index.jsp").include(request, response);
 
-                        if ("staff".equalsIgnoreCase(role)) {
-                            response.sendRedirect("staffDashboard.jsp");
-                        } else {
-                            response.sendRedirect("customerDashboard.jsp");
-                        }
-                    } else {
-                        response.sendRedirect("login2.jsp?error=invalid");
-                    }
-                }
-            } finally {
-                dbConnector.closeConnection();
+            } else {                       
+                // 15- set user does not exist error to the session      
+                session.setAttribute("errorMsg", "The user does not exist.");          
+
+                // 16- redirect user back to the login.jsp       
+                request.getRequestDispatcher("login2.jsp").include(request, response);        
             }
 
-        } catch (ClassNotFoundException | SQLException e) {
-            logger.log(Level.SEVERE, "An error occurred during login: ", e);
-            response.sendRedirect("login2.jsp?error=exception");
+            dbConnector.closeConnection();
+
+        } catch (ClassNotFoundException | SQLException ex) {           
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+
+            // Set generic error message for users
+            session.setAttribute("errorMsg", "Internal server error. Please try again later.");
+
+            request.getRequestDispatcher("login2.jsp").include(request, response);
         }
     }
 }

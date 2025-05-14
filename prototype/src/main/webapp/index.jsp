@@ -1,4 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    String role = (String) session.getAttribute("role");
+    String firstName = (String) session.getAttribute("firstName");
+
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +13,7 @@
     <title>Welcome to IOTBAY</title>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-    *{
+       *{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -249,52 +256,121 @@
     }
     </style>
 </head>
-<body>
+<body class="<%= role != null ? role : "guest" %>">
 
-<nav class ="nav">
+<nav class="nav">
     <div class="nav-links">
-        <a href ="#">Cart</a>
 
-        <div class="dropdown">
-        <a href ="#" id="devices-link">Devices</a>
-        <div class="dropdown-menu">
-        <input type="text" id="search-bar" placeholder="Search Devices" class="search-bar">
-        </div>
-        </div>
+        <% if (role == null) { %>
+            <a href="login2.jsp">Login</a>
+        <% } else if ("customer".equals(role)) { %>
+            <a href="#">Cart</a>
 
-        <a href ="login2.jsp">Login</a>
+            <div class="dropdown">
+                <a href="#" id="devices-link-customer">Devices</a>
+                <div class="dropdown-menu">
+                    <input type="text" id="search-bar-customer" placeholder="Search Devices" class="search-bar" style="display: none;">
+                </div>
+            </div>
 
-        <div class ="dropdown">
-        <a href ="#">Profile</a>
-        <div class="dropdown-menu">
-        <a href="accountSetting.jsp">Account Settings</a>
-        <a href="#">Orders</a>
-        <a href="#">Wishlist</a>
-        <a href="#">Logout</a>
-    </div>
-    </div>
+            <div class="dropdown">
+                <a href="#">Order</a>
+                <div class="dropdown-menu">
+                    <a href="#">Manage Orders</a>
+                    <a href="#">Order History</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">Profile</a>
+                <div class="dropdown-menu">
+                    <a href="accountSetting.jsp">Account Settings</a>
+                    <a href="#">Payment Settings</a>
+                    <a href="#">Shipment Settings</a>
+                    <a href="#">Wishlist</a>
+                    <a href="logout.jsp">Logout</a>
+                </div>
+            </div>
+
+            <% if (firstName != null) { %>
+                <span style="font-size: 20px;">Hello, <%= firstName %>!</span>
+            <% } %>
+
+        <% } else if ("staff".equals(role)) { %>
+
+            <div class="dropdown">
+                <a href="#">Order</a>
+                <div class="dropdown-menu">
+                    <a href="#">Manage Orders</a>
+                    <a href="#">Order History</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">Customers</a>
+                <div class="dropdown-menu">
+                    <a href="#">Manage Users</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#" id="devices-link-staff">Devices</a>
+                <div class="dropdown-menu">
+                    <input type="text" id="search-bar-staff" placeholder="Search Devices" class="search-bar" style="display: none;">
+                    <a href="#">Manage Devices</a>
+                    <a href="#">Manage Supplier</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a href="#">Profile</a>
+                <div class="dropdown-menu">
+                    <a href="staffAccount.jsp">Account Settings</a>
+                    <a href="logout.jsp">Logout</a>
+                </div>
+            </div>
+
+            <% if (firstName != null) { %>
+                <span style="font-size: 20px;">Hello, <%= firstName %>!</span>
+            <% } %>
+
+        <% } %>
+
     </div>
 </nav>
 
-<section class = "text">
-<img src = "IOTBay.png" alt="shape" class="shape">
+<section class="text">
+    <img src="IOTBay.png" alt="shape" class="shape">
 
-<div class ="text-content">
-    <div class="subtitle">WELCOME TO</div>
-    <div class="title"><strong>IOTBay</strong></div>
-</div>
+    <div class="text-content">
+        <div class="subtitle">WELCOME TO</div>
+        <div class="title"><strong>IOTBay</strong></div>
+    </div>
 
-<img src = "3d-render-game-equipment-console-headset-free-png.webp" alt="Devices" class="devices floating">
-
+    <img src="3d-render-game-equipment-console-headset-free-png.webp" alt="Devices" class="devices floating">
 </section>
 
 <script>
-document.getElementById("devices-link").addEventListener("click", function(event) {
-    event.preventDefault(); 
-    const searchBar = document.getElementById("search-bar");
-    searchBar.style.display = (searchBar.style.display === "block") ? "none" : "block";
-});
+    // Customer search toggle
+    const customerDevices = document.getElementById("devices-link-customer");
+    const customerSearch = document.getElementById("search-bar-customer");
+    if (customerDevices && customerSearch) {
+        customerDevices.addEventListener("click", function(event) {
+            event.preventDefault();
+            customerSearch.style.display = (customerSearch.style.display === "block") ? "none" : "block";
+        });
+    }
 
+    // Staff search toggle
+    const staffDevices = document.getElementById("devices-link-staff");
+    const staffSearch = document.getElementById("search-bar-staff");
+    if (staffDevices && staffSearch) {
+        staffDevices.addEventListener("click", function(event) {
+            event.preventDefault();
+            staffSearch.style.display = (staffSearch.style.display === "block") ? "none" : "block";
+        });
+    }
 </script>
+
 </body>
 </html>
