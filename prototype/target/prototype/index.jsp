@@ -3,7 +3,7 @@
 <%@ page import="model.User" %>
 
 <%
-    User user = (User) session.getAttribute("user");
+    User user = (User) session.getAttribute("User");
     String role = (user != null) ? user.getRole() : null;
     String firstName = (user != null) ? user.getFirstName() : "";
 %>
