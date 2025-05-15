@@ -153,7 +153,7 @@
     <div class="form-content">
     <h1>LOGIN TO IOTBay</h1>
 
-    <form action ="login" method="post">
+    <form action ="LoginServlet" method="post">
     <input type="email" class="input-field" name="email" placeholder="EMAIL" required>
     <input type="password" class="input-field" name="password" placeholder="PASSWORD" required>
 

@@ -1,14 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%
-    String role = (String) session.getAttribute("role");
-    String firstName = (String) session.getAttribute("firstName");
+<%@ page import="model.User" %>
 
+<%
+    User user = (User) session.getAttribute("user");
+    String role = (user != null) ? user.getRole() : null;
+    String firstName = (user != null) ? user.getFirstName() : "";
 %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>Welcome to IOTBAY</title>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
@@ -257,13 +260,14 @@
     </style>
 </head>
 <body class="<%= role != null ? role : "guest" %>">
+<jsp:include page="/ConnServlet" flush="true" />
 
 <nav class="nav">
     <div class="nav-links">
 
-        <% if (role == null) { %>
+        <% if (user == null) { %>
             <a href="login2.jsp">Login</a>
-        <% } else if ("customer".equals(role)) { %>
+        <% } else if ("customer".equals(user.getRole())) { %>
             <a href="#">Cart</a>
 
             <div class="dropdown">
@@ -292,11 +296,11 @@
                 </div>
             </div>
 
-            <% if (firstName != null) { %>
+            <% if (user.getFirstName() != null) { %>
                 <span style="font-size: 20px;">Hello, <%= firstName %>!</span>
             <% } %>
 
-        <% } else if ("staff".equals(role)) { %>
+        <% } else if ("staff".equals(user.getRole())) { %>
 
             <div class="dropdown">
                 <a href="#">Order</a>
@@ -330,7 +334,7 @@
                 </div>
             </div>
 
-            <% if (firstName != null) { %>
+            <% if (user.getFirstName() != null) { %>
                 <span style="font-size: 20px;">Hello, <%= firstName %>!</span>
             <% } %>
 
