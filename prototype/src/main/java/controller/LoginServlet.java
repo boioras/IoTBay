@@ -68,9 +68,11 @@ public class LoginServlet extends HttpServlet {
 
             //13-save the logged in user object to the session     
             session.setAttribute("User", user);
-
             session.setAttribute("role", user.getRole());
-
+            session.setAttribute("email", user.getEmail());
+            session.setAttribute("firstName", user.getFirstName());
+            session.setAttribute("lastName", user.getLastName());
+            session.setAttribute("phone", user.getPhone());
 
             //14- redirect user to the main.jsp     
             request.getRequestDispatcher("index.jsp").include(request,response);

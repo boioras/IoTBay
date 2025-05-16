@@ -196,32 +196,34 @@
     <div class="main-content">
     <div id="personal" class="tab-content">
     <h2>PERSONAL INFORMATION</h2>
-        <label>USER ID:</label>
-        <div class="info-box"><%=request.getParameter("email") %></div>
+        <label>USERNAME:</label>
+        <div class="info-box"><%=session.getAttribute("email") %></div>
         <label>EMAIL:</label>
-        <div class="info-box"><%=request.getParameter("email") %></div>
+        <div class="info-box"><%=session.getAttribute("email") %></div>
         <label>FIRST NAME:</label>
-        <div class="info-box"><%=request.getParameter("firstName") %></div>
+        <div class="info-box"><%=session.getAttribute("firstName") %></div>
         <label>LAST NAME:</label>
-        <div class="info-box"><%=request.getParameter("lastName") %></div>
+        <div class="info-box"><%=session.getAttribute("lastName") %></div>
         <label>PHONE:</label>
-        <div class="info-box"><%=request.getParameter("phone") %></div>
+        <div class="info-box"><%=session.getAttribute("phone") %></div>
 
     </div>
 
     <div id="edit" class="tab-content hidden">
     <h2>EDIT PROFILE</h2>
     <form action="updateProfile.jsp" method="post">
-        <label>USER ID:</label>
-        <input type="text" name="email" placeholder="ENTER USERNAME">
+        <label>USERNAME:</label>
+        <input type="text" name="email" value= "<%= session.getAttribute("email")%>" readonly>
         <label>EMAIL:</label>
-        <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value="<%=request.getParameter("email") %>" required>
+        <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value= "<%=session.getAttribute("email") %>" required>
         <label>FIRST NAME:</label>
-        <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" value="<%=request.getParameter("firstName") %>" required>
+        <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" value= "<%=session.getAttribute("firstName") %>" required>
         <label>LAST NAME:</label>
-        <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" value="<%=request.getParameter("lastName") %>" required>
+        <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" value= "<%=session.getAttribute("lastName") %>"required>
         <label>PHONE:</label>
-        <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" value="<%=request.getParameter("phone") %>" required>
+        <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" value= "<%=session.getAttribute("phone") %>"required>
+        <label>ROLE:</label>
+        <input type="tel" class="input-field" name="phone" value= "<%=session.getAttribute("role") %>" readonly>
 
 
     <button type="submit" class="btn-save">SAVE CHANGES</button>
@@ -247,11 +249,11 @@
     <div id="logs-container">
     <div class="log-entry">
     <label>LOGGED TIME:</label>
-    <div class="log-time"><%=request.getAttribute("logTime") %></div>
+    <div class="log-time"><%=session.getAttribute("logTime") %></div>
     <label>LOG DETAILS:</label>
-    <div class="log-details"><%=request.getAttribute("activity") %></div>
+    <div class="log-details"><%=session.getAttribute("activity") %></div>
     <label>LOG LOCATION:</label>
-     <div class="log-location"><%=request.getAttribute("location") %></div>
+     <div class="log-location"><%=session.getAttribute("location") %></div>
     </div>
 </div>
 </div>

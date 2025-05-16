@@ -190,34 +190,37 @@
     <button class="logout-button">LOGOUT</button>
     </div>
 
-    <div class="main-content">
+   <div class="main-content">
     <div id="personal" class="tab-content">
     <h2>PERSONAL INFORMATION</h2>
-        <label>STAFF ID:</label>
-        <div class="info-box"><%=request.getAttribute("userName") %></div>
+        <label>USERNAME:</label>
+        <div class="info-box"><%=session.getAttribute("email") %></div>
         <label>EMAIL:</label>
-        <div class="info-box"><%=request.getAttribute("email") %></div>
+        <div class="info-box"><%=session.getAttribute("email") %></div>
         <label>FIRST NAME:</label>
-        <div class="info-box"><%=request.getAttribute("firstName") %></div>
+        <div class="info-box"><%=session.getAttribute("firstName") %></div>
         <label>LAST NAME:</label>
-        <div class="info-box"><%=request.getAttribute("lastName") %></div>
+        <div class="info-box"><%=session.getAttribute("lastName") %></div>
         <label>PHONE:</label>
-        <div class="info-box"><%=request.getAttribute("phone") %></div>
+        <div class="info-box"><%=session.getAttribute("phone") %></div>
+
     </div>
 
     <div id="edit" class="tab-content hidden">
     <h2>EDIT PROFILE</h2>
-    <form action="updateStaffProfile.jsp" method="post">
-        <label>STAFF ID:</label>
-        <input type="text" name="user ID" placeholder="ENTER ID">
+    <form action="updateProfile.jsp" method="post">
+        <label>USERNAME:</label>
+        <input type="text" name="email" value= "<%= session.getAttribute("email")%>" readonly>
         <label>EMAIL:</label>
-        <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value="<%=request.getAttribute("email") %>" required>
+        <input type="email" class="input-field" name="email" placeholder="ENTER EMAIL" value= "<%=session.getAttribute("email") %>" required>
         <label>FIRST NAME:</label>
-        <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" value="<%=request.getAttribute("firstName") %>" required>
+        <input type="text" class="input-field" name="firstName" placeholder="ENTER FIRST NAME" value= "<%=session.getAttribute("firstName") %>" required>
         <label>LAST NAME:</label>
-        <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" value="<%=request.getAttribute("lastName") %>" required>
+        <input type="text" class="input-field" name="lastName" placeholder="ENTER LAST NAME" value= "<%=session.getAttribute("lastName") %>"required>
         <label>PHONE:</label>
-        <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" value="<%=request.getAttribute("phone") %>" required>
+        <input type="tel" class="input-field" name="phone" placeholder="ENTER PHONE" value= "<%=session.getAttribute("phone") %>"required>
+        <label>ROLE:</label>
+        <input type="tel" class="input-field" name="phone" value= "<%=session.getAttribute("role") %>" readonly>
 
     <button type="submit" class="btn-save">SAVE CHANGES</button>
     </form>
