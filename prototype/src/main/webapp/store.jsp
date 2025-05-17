@@ -45,7 +45,7 @@
     .product {
       background-color: white;
       width: 250px;
-      height: 350px;
+      height: 370px;
       padding: 20px;
       display: flex;
       flex-direction: column;
@@ -56,17 +56,9 @@
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
-    .product:nth-child(1) {
-      border-color: #ff6b6b; /* Red border */
-    }
-
-    .product:nth-child(2) {
-      border-color: #4ecdc4; /* Teal border */
-    }
-
-    .product:nth-child(3) {
-      border-color: #ffe66d; /* Yellow border */
-    }
+    .product:nth-child(1) { border-color: #ff6b6b; }
+    .product:nth-child(2) { border-color: #4ecdc4; }
+    .product:nth-child(3) { border-color: #ffe66d; }
 
     .product img {
       max-width: 100%;
@@ -98,14 +90,13 @@
       left: 20px;
     }
 
-.product-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #444;
-  margin: 10px 0;
-  text-align: center;
-}
-
+    .product-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #444;
+      margin: 10px 0;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -113,28 +104,40 @@
     <img src="IoTBay Logo Design.PNG" alt="logo" class="logo" />
   </div>
 
-<div class="products">
-  <div class="product">
-    <img src="laptop.png" alt="Product 1" />
-    <p class="product-title">HP Laptop</p>
-    <button class="btn">Add to Cart</button>
+  <div class="products">
+
+    <div class="product">
+      <img src="laptop.png" alt="HP Laptop" />
+      <p class="product-title">HP Laptop</p>
+      <form action="addToCart.jsp" method="post">
+        <input type="hidden" name="product" value="HP Laptop" />
+        <button class="btn" type="submit">Add to Cart</button>
+      </form>
+    </div>
+
+    <div class="product">
+      <img src="Mobile phone.png" alt="Asus Zenfone" />
+      <p class="product-title">Asus Zenfone</p>
+      <form action="addToCart.jsp" method="post">
+        <input type="hidden" name="product" value="Asus Zenfone" />
+        <button class="btn" type="submit">Add to Cart</button>
+      </form>
+    </div>
+
+    <div class="product">
+      <img src="nikon-camera-hfr.png" alt="Nikon HFR Camera" />
+      <p class="product-title">Nikon HFR Camera</p>
+      <form action="addToCart.jsp" method="post">
+        <input type="hidden" name="product" value="Nikon HFR Camera" />
+        <button class="btn" type="submit">Add to Cart</button>
+      </form>
+    </div>
   </div>
-  <div class="product">
-    <img src="Mobile phone.png" alt="Product 2" />
-    <p class="product-title">Asus Zenfone</p>
-    <button class="btn">Add to Cart</button>
-  </div>
-  <div class="product">
-    <img src="nikon-camera-hfr.png" alt="Product 3" />
-    <p class="product-title">Nikon HFR Camera</p>
-    <button class="btn">Add to Cart</button>
-  </div>
-</div>
 
   <div class="logout-container">
-    <form action="logout.jsp">
-  <button class="btn">Logout</button>
-</form>
+    <form action="logout.jsp" method="post">
+      <button class="btn" type="submit">Logout</button>
+    </form>
   </div>
 </body>
 </html>
